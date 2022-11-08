@@ -1,0 +1,13 @@
+.info__edit-button {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #FFFFFF;
+  background-color: #000000;
+  background-image: url(../../../images/Vector.svg);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  background-position: center;
+  transform: translateY(-50%);
+}
+
+

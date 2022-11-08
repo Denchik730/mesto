@@ -1,0 +1,11 @@
+.info__add-button {
+  width: 150px;
+  height: 50px;
+  background-color: #000000;
+  border: 2px solid #FFFFFF;
+  border-radius: 2px;
+  background-image: url(../../../images/Plus-add-button.svg);
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  background-position: center;
+}
