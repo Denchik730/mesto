@@ -9,3 +9,16 @@
   background-size: 22px 22px;
   background-position: center;
 }
+
+@media screen and (max-width: 984px) {
+  .info__add-button {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .info__add-button {
+    margin-top: 36px;
+    width: 100%;
+  }
+}

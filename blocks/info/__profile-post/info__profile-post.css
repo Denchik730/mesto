@@ -5,4 +5,18 @@
   font-size: 18px;
   line-height: 1.22;
   color: #FFFFFF;
+  grid-row: 2/3;
+}
+
+
+@media screen and (max-width: 984px) {
+  .info__profile-post {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .info__profile-post {
+    margin-top: 14px;
+  }
 }
