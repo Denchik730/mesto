@@ -8,6 +8,12 @@
   background-repeat: no-repeat;
   background-size: 22px 22px;
   background-position: center;
+  transition: opacity .5s;
+  cursor: pointer;
+}
+
+.info__add-button:hover {
+  opacity: .6;
 }
 
 @media screen and (max-width: 984px) {
