@@ -1,4 +1,5 @@
 .info__profile-post {
+  max-width: 336px;
   margin-top: 16px;
   margin-bottom: 0;
   font-weight: 400;
@@ -6,6 +7,9 @@
   line-height: 1.22;
   color: #FFFFFF;
   grid-row: 2/3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 
@@ -17,6 +21,7 @@
 
 @media screen and (max-width: 576px) {
   .info__profile-post {
+    max-width: 282px;
     margin-top: 14px;
   }
 }

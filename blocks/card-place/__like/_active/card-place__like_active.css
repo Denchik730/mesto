@@ -1,3 +1,3 @@
-/* .card-place__like_active {
-  fill: #000000;
-} */
+.card-place__like_active {
+  background-image: url(../../../../images/card-like-button-active.svg);
+}

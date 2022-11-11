@@ -2,7 +2,7 @@
   width: 22px;
   height: 19px;
   margin: 5px 5px 0 0;
-  background-image: url(../../../images/card-like-button-active.svg);
+  background-image: url(../../../images/card-like-button.svg);
   background-size: cover;
   transition: opacity .5s;
   cursor: pointer;

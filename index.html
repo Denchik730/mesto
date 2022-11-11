@@ -33,42 +33,41 @@
             <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
             <figcaption class="card-place__descr">
               <p class="card-place__name">Карачаевск</p>
-              <!-- <img src="./images/Group.svg" alt="" class="card-place__like"> -->
               <div class="card-place__like"></div>
             </figcaption>
           </figure>
           <figure class="card-place">
             <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
             <figcaption class="card-place__descr">
-              <p class="card-place__name">Карачаевск</p>
+              <p class="card-place__name">Гора Эльбрус</p>
               <div class="card-place__like"></div>
             </figcaption>
           </figure>
           <figure class="card-place">
             <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
             <figcaption class="card-place__descr">
-              <p class="card-place__name">Карачаевск</p>
+              <p class="card-place__name">Домбай</p>
               <div class="card-place__like"></div>
             </figcaption>
           </figure>
           <figure class="card-place">
             <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
             <figcaption class="card-place__descr">
-              <p class="card-place__name">Карачаевск</p>
+              <p class="card-place__name">Гора Эльбрус</p>
               <div class="card-place__like"></div>
             </figcaption>
           </figure>
           <figure class="card-place">
             <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
             <figcaption class="card-place__descr">
-              <p class="card-place__name">Карачаевск</p>
+              <p class="card-place__name">Домбай</p>
               <div class="card-place__like"></div>
             </figcaption>
           </figure>
           <figure class="card-place">
             <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
             <figcaption class="card-place__descr">
-              <p class="card-place__name">Карачаевск</p>
+              <p class="card-place__name">Карачаево-Черкеск</p>
               <div class="card-place__like"></div>
             </figcaption>
           </figure>
@@ -85,12 +84,14 @@
     <div class="popup__container">
       <form action="" class="popup__form">
         <h2 class="popup__title-form">Редактировать профиль</h2>
-        <input name="name" type="text" class="popup__input popup__name-input" placeholder="Жак-Ив Кусто">
-        <input name="post" type="text" class="popup__input popup-form__about-input" placeholder="Исследователь океана">
-        <button class="popup__button-form">Сохранить</button>
+        <input required name="name" type="text" class="popup__input popup__name-input" value="Жак-Ив Кусто">
+        <input required name="post" type="text" class="popup__input popup__post-input" value="Исследователь океана">
+        <button type="submit" class="popup__button-form">Сохранить</button>
       </form>
-      <button class="popup__close"></button>
+      <button type="button" class="popup__close"></button>
     </div>
   </div>
+
+  <script src="./js/script.js"></script>
 </body>
 </html>
