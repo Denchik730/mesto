@@ -9,7 +9,6 @@
 
 @import url(../blocks/logo/logo.css);
 
-@import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__divider/header__divider.css);
 
@@ -22,7 +21,6 @@
 @import url(../blocks/info/__edit-button/info__edit-button.css);
 @import url(../blocks/info/__add-button/info__add-button.css);
 
-@import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__grid-container/elements__grid-container.css);
 
 @import url(../blocks/card-place/card-place.css);

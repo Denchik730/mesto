@@ -1,6 +1,4 @@
 .info__profile {
-  /* display: flex;
-  align-items: center; */
   display: grid;
   grid-template-columns: 120px minmax(282px , 336px);
   grid-template-rows: repeat(2, auto);

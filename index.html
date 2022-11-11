@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Mesto</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
@@ -13,85 +13,83 @@
     <div class="header__divider"></div>
   </header>
 
-    <main class="content">
-      <section class="info page__info">
-        <div class="info__profile">
-          <img src="./images/Avatar.svg" alt="аватарка профиля" class="info__profile-avatar">
-          <div class="info__profile-descr">
-            <h1 class="info__profile-name">Жак-Ив Кусто</h1>
-            <button class="info__edit-button">
-          </div>
-          <p class="info__profile-post">Исследователь океана</p>
-          </button>
+  <main class="content">
+    <section class="info page__info">
+      <div class="info__profile">
+        <img src="./images/Avatar.svg" alt="аватарка профиля" class="info__profile-avatar">
+        <div class="info__profile-descr">
+          <h1 class="info__profile-name">Жак-Ив Кусто</h1>
+          <button class="info__edit-button"></button>
         </div>
-        <button class="info__add-button"></button>
-      </section>
+        <p class="info__profile-post">Исследователь океана</p>
+      </div>
+      <button class="info__add-button"></button>
+    </section>
 
     <section class="elements page__elements">
       <div class="elements__grid-container">
-          <figure class="card-place">
-            <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
-            <figcaption class="card-place__descr">
-              <p class="card-place__name">Карачаевск</p>
-              <div class="card-place__like"></div>
-            </figcaption>
-          </figure>
-          <figure class="card-place">
-            <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
-            <figcaption class="card-place__descr">
-              <p class="card-place__name">Гора Эльбрус</p>
-              <div class="card-place__like"></div>
-            </figcaption>
-          </figure>
-          <figure class="card-place">
-            <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
-            <figcaption class="card-place__descr">
-              <p class="card-place__name">Домбай</p>
-              <div class="card-place__like"></div>
-            </figcaption>
-          </figure>
-          <figure class="card-place">
-            <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
-            <figcaption class="card-place__descr">
-              <p class="card-place__name">Гора Эльбрус</p>
-              <div class="card-place__like"></div>
-            </figcaption>
-          </figure>
-          <figure class="card-place">
-            <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
-            <figcaption class="card-place__descr">
-              <p class="card-place__name">Домбай</p>
-              <div class="card-place__like"></div>
-            </figcaption>
-          </figure>
-          <figure class="card-place">
-            <img class="card-place__img" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="The beautiful MDN logo." />
-            <figcaption class="card-place__descr">
-              <p class="card-place__name">Карачаево-Черкеск</p>
-              <div class="card-place__like"></div>
-            </figcaption>
-          </figure>
+        <figure class="card-place">
+          <img class="card-place__img" src="./images/Рим.jpg" alt="изображение вида внутри дворца в Риме">
+          <figcaption class="card-place__descr">
+            <p class="card-place__name">Рим</p>
+            <div class="card-place__like"></div>
+          </figcaption>
+        </figure>
+        <figure class="card-place">
+          <img class="card-place__img" src="./images/Бергизель.jpg" alt="Изображение вышки в Бергизель">
+          <figcaption class="card-place__descr">
+            <p class="card-place__name">Бергизель</p>
+            <div class="card-place__like"></div>
+          </figcaption>
+        </figure>
+        <figure class="card-place">
+          <img class="card-place__img" src="./images/Дубай.jpg" alt="Небоскреб в Дубаях ночью">
+          <figcaption class="card-place__descr">
+            <p class="card-place__name">Дубай</p>
+            <div class="card-place__like"></div>
+          </figcaption>
+        </figure>
+        <figure class="card-place">
+          <img class="card-place__img" src="./images/Санта-Крус-де-Тенерифе.jpg" alt="Изображение девушки на фоне Санта-Крус-де-Тенерифе">
+          <figcaption class="card-place__descr">
+            <p class="card-place__name">Санта-Крус-де-Тенерифе</p>
+            <div class="card-place__like"></div>
+          </figcaption>
+        </figure>
+        <figure class="card-place">
+          <img class="card-place__img" src="./images/ТелебашняГуанчжоу.jpg" alt="Изоборажение телебашни в Гуанчжоу">
+          <figcaption class="card-place__descr">
+            <p class="card-place__name">Гуанчжоу</p>
+            <div class="card-place__like"></div>
+          </figcaption>
+        </figure>
+        <figure class="card-place">
+          <img class="card-place__img" src="./images/Апаран.jpg" alt="Темные небоскребы в Апаран">
+          <figcaption class="card-place__descr">
+            <p class="card-place__name">Апаран</p>
+            <div class="card-place__like"></div>
+          </figcaption>
+        </figure>
       </div>
     </section>
-
   </main>
 
   <footer class="footer page__footer">
-    <p class="footer__descr">&copy; 2022 Mesto Russia</p>
+    <h2 class="footer__descr">&copy; 2022 Mesto Russia</h2>
   </footer>
 
-  <div class="popup">
+  <section class="popup">
     <div class="popup__container">
-      <form action="" class="popup__form">
+      <form class="popup__form">
         <h2 class="popup__title-form">Редактировать профиль</h2>
-        <input required name="name" type="text" class="popup__input popup__name-input" value="Жак-Ив Кусто">
-        <input required name="post" type="text" class="popup__input popup__post-input" value="Исследователь океана">
+        <input required name="name" type="text" class="popup__input popup__name-input">
+        <input required name="post" type="text" class="popup__input popup__post-input">
         <button type="submit" class="popup__button-form">Сохранить</button>
       </form>
       <button type="button" class="popup__close"></button>
     </div>
-  </div>
+  </section>
 
-  <script src="./js/script.js"></script>
+  <script src="./pages/index.js"></script>
 </body>
 </html>
