@@ -14,3 +14,10 @@
     margin-bottom: 36px;
   }
 }
+
+
+@media screen and (max-width: 425px) {
+  .footer__descr {
+    font-size: 14px;
+  }
+}

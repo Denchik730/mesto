@@ -10,6 +10,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  align-self: start;
 }
 
 
@@ -23,5 +24,7 @@
   .info__profile-post {
     max-width: 282px;
     margin-top: 14px;
+    align-self: center;
+
   }
 }

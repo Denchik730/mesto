@@ -6,9 +6,11 @@
   background-size: cover;
   transition: opacity .5s;
   cursor: pointer;
+  border: none;
+  background-color: #FFFFFF;
 }
 
 .card-place__like:hover {
-  opacity: .6;
+  opacity: .5;
 }
 

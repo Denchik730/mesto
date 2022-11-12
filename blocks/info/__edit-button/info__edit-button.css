@@ -3,11 +3,10 @@
   height: 24px;
   border: 1px solid #FFFFFF;
   background-color: #000000;
-  background-image: url(../../../images/Edit-icon.svg);
+  background-image: url(../../../images/edit-icon.svg);
   background-repeat: no-repeat;
   background-size: 10px 10px;
   background-position: center;
-  transform: translateY(-9px);
   transition: opacity .5s;
   cursor: pointer;
 }
@@ -16,8 +15,10 @@
   opacity: .6;
 }
 
-@media screen and (max-width: 984px) {
+@media screen and (max-width: 425px) {
   .info__edit-button {
-    transform: translateY(-6px);
+    width: 18px;
+    height: 18px;
+    background-size: 7.5px 7.5px;
   }
 }
