@@ -27,7 +27,7 @@
 
     <section class="elements page__elements">
       <div class="elements__grid-container">
-        <figure class="card-place">
+        <!-- <figure class="card-place">
           <img class="card-place__img" src="./images/rome.jpg" alt="изображение вида внутри дворца в Риме">
           <figcaption class="card-place__descr">
             <h2 class="card-place__name">Рим</h2>
@@ -68,7 +68,17 @@
             <h2 class="card-place__name">Апаран</h2>
             <button type="button" class="card-place__like"></button>
           </figcaption>
-        </figure>
+        </figure> -->
+        <template id="card-place">
+          <figure class="card-place">
+            <img class="card-place__img" alt="Изображение">
+            <figcaption class="card-place__descr">
+              <h2 class="card-place__name"></h2>
+              <button type="button" class="card-place__like"></button>
+            </figcaption>
+          </figure>
+        </template>
+
       </div>
     </section>
   </main>
