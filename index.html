@@ -87,9 +87,9 @@
     <p class="footer__descr">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <section class="popup">
+  <section class="popup popup_edit_form">
     <div class="popup__container">
-      <form name="editForm" class="popup__form">
+      <form name="editForm" class="popup__form popup__form_edit">
         <h2 class="popup__title-form">Редактировать профиль</h2>
         <input required name="name" type="text" class="popup__input popup__input_field_name">
         <input required name="post" type="text" class="popup__input popup__input_field_post">
@@ -99,6 +99,27 @@
     </div>
   </section>
 
+  <section class="popup popup_add_form">
+    <div class="popup__container">
+      <form name="addForm" class="popup__form popup__form_add">
+        <h2 class="popup__title-form">Новое место</h2>
+        <input required name="name-place" type="text" class="popup__input popup__input_field_place-name" placeholder="Название">
+        <input required name="link" type="text" class="popup__input popup__input_field_place-link" placeholder="Ссылка на картинку">
+        <button type="submit" class="popup__button-form">Создать</button>
+      </form>
+      <button type="button" class="popup__close"></button>
+    </div>
+  </section>
+
+  <section class="popup popup_image">
+    <div class="popup__container popup__container_for-image">
+      <figure class="popup__place">
+        <img class="popup__place-image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg" alt="Изображение">
+        <figcaption class="popup__place-descr">Бавлы</figcaption>
+      </figure>
+      <button type="button" class="popup__close"></button>
+    </div>
+  </section>
   <script src="./scripts/index.js"></script>
 </body>
 </html>
