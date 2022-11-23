@@ -1,8 +1,10 @@
+// popups
 const popup = document.querySelectorAll('.popup');
 const popupElementEdit = document.querySelector('.popup_edit_form');
 const popupElementAdd = document.querySelector('.popup_add_form');
+const popupElementZoomImage = document.querySelector('.popup_image');
 
-
+// popups open button
 const editButton = document.querySelector('.info__edit-button');
 const addButton = document.querySelector('.info__add-button');
 const closePopupButton = document.querySelectorAll('.popup__close');
@@ -54,21 +56,12 @@ function formSubmitHandlerAboutUser(evt) {
 function formSubmitHandlerNewPlace(evt) {
   evt.preventDefault();
 
-  let objCard = {
-    name: null,
-    link: null
-  }
-
-  objCard['name'] = namePlaceInput.value;
-  objCard['link'] = linkPlaceInput.value;
-
-  cardElemGridContainer.prepend(createCard(objCard));
+  renderCard({name: namePlaceInput.value, link: linkPlaceInput.value}, cardElemGridContainer);
 
   namePlaceInput.value = '';
   linkPlaceInput.value = '';
 
   closePopup();
-
 }
 
 
@@ -112,18 +105,22 @@ const initialCards = [
 
 function displayCards(arr) {
   arr.forEach((item) => {
-    cardElemGridContainer.append(createCard(item));
+
+    // cardElemGridContainer.append(createCard(item));
+    renderCard(item, cardElemGridContainer);
+
   });
 
 }
 
-function createCard(card) {
+
+function createCard(cardData) {
 
     const cardElement = cardPlaceTemplate.querySelector('.card-place').cloneNode(true);
 
-    cardElement.querySelector('.card-place__img').src = card.link;
+    cardElement.querySelector('.card-place__img').src = cardData.link;
 
-    cardElement.querySelector('.card-place__name').textContent = card.name;
+    cardElement.querySelector('.card-place__name').textContent = cardData.name;
 
     cardElement.querySelector('.card-place__like').addEventListener('click', likeCard);
 
@@ -133,6 +130,11 @@ function createCard(card) {
 
 }
 
+renderCard = (cardData, cardsContainer) => {
+  const cardElement = createCard(cardData);
+
+  cardsContainer.prepend(cardElement);
+}
 
 displayCards(initialCards);
 
@@ -149,7 +151,6 @@ function likeCard(evt) {
 
 function deleteCard(evt) {
   const target = evt.target;
-  const card = target.closest('.card-place');
-  card.remove();
+  target.closest('.card-place').remove();;
 }
 
