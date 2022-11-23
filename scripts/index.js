@@ -2,9 +2,11 @@ const popup = document.querySelectorAll('.popup');
 const popupElementEdit = document.querySelector('.popup_edit_form');
 const popupElementAdd = document.querySelector('.popup_add_form');
 
+
 const editButton = document.querySelector('.info__edit-button');
 const addButton = document.querySelector('.info__add-button');
 const closePopupButton = document.querySelectorAll('.popup__close');
+
 
 const formElementEdit = document.querySelector('.popup__form_edit');
 const formElementAdd = document.querySelector('.popup__form_add');
@@ -60,9 +62,7 @@ function formSubmitHandlerNewPlace(evt) {
   objCard['name'] = namePlaceInput.value;
   objCard['link'] = linkPlaceInput.value;
 
-  initialCards.unshift(objCard);
-
-  displayCards(initialCards);
+  cardElemGridContainer.prepend(createCard(objCard));
 
   namePlaceInput.value = '';
   linkPlaceInput.value = '';
@@ -80,7 +80,6 @@ closePopupButton.forEach(btn => {
 })
 formElementEdit.addEventListener('submit', formSubmitHandlerAboutUser);
 formElementAdd.addEventListener('submit', formSubmitHandlerNewPlace);
-// formElement.addEventListener('submit', formSubmitHandlerNewPlace);
 
 
 //Шесть карточек из коробки
@@ -112,19 +111,45 @@ const initialCards = [
 ];
 
 function displayCards(arr) {
-  cardElemGridContainer.innerHTML = '';
-  arr.forEach(createCard)
+  arr.forEach((item) => {
+    cardElemGridContainer.append(createCard(item));
+  });
+
 }
 
 function createCard(card) {
+
     const cardElement = cardPlaceTemplate.querySelector('.card-place').cloneNode(true);
 
     cardElement.querySelector('.card-place__img').src = card.link;
 
     cardElement.querySelector('.card-place__name').textContent = card.name;
 
-    cardElemGridContainer.append(cardElement);
+    cardElement.querySelector('.card-place__like').addEventListener('click', likeCard);
+
+    cardElement.querySelector('.card-place__delete').addEventListener('click', deleteCard);
+
+    return cardElement;
+
 }
 
 
 displayCards(initialCards);
+
+
+function likeCard(evt) {
+  const target = evt.target;
+  if (target.classList.contains('card-place__like_active')) {
+    target.classList.remove('card-place__like_active');
+  } else {
+    target.classList.add('card-place__like_active');
+  }
+}
+
+
+function deleteCard(evt) {
+  const target = evt.target;
+  const card = target.closest('.card-place');
+  card.remove();
+}
+
