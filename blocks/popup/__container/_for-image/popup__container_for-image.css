@@ -1,22 +1,12 @@
 .popup__container_for-image {
-  padding: 0;
+  /* padding: 0;
   border-radius: 0;
   background-color: transparent;
-}
-
-.popup__place {
-  margin: 0;
-}
-
-.popup__place-image {
-  max-width: 75vw;
+  width: auto; */
+  position: relative;
   max-height: 75vh;
-  width: 100%;
-  object-fit: cover;
 }
 
-.popup__place-descr {
-  box-sizing: border-box;
-  padding: 10px 0 0 0;
-  color: #FFFFFF;
-}
+
+
+
