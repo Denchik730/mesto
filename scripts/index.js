@@ -1,5 +1,4 @@
 // popups
-const popup = document.querySelectorAll('.popup');
 const popupElementEdit = document.querySelector('.popup_edit_form');
 const popupElementAdd = document.querySelector('.popup_add_form');
 const popupElementZoomImage = document.querySelector('.popup_image');
@@ -8,7 +7,6 @@ const popupElementZoomImage = document.querySelector('.popup_image');
 // popups open button
 const popupEditOpenButton = document.querySelector('.info__edit-button');
 const popupAddOpenButton = document.querySelector('.info__add-button');
-const popupImageOpenButton = document.querySelectorAll('.card-place__img');
 
 
 // popups close button
@@ -23,8 +21,8 @@ const popupImageDescr = document.querySelector('.popup__place-descr');
 // popup forms and inputs
 const formElementEdit = document.querySelector('.popup__form_edit');
 const formElementAdd = document.querySelector('.popup__form_add');
-const nameInput = popupElementEdit.querySelector('.popup__input_field_name');
-const postInput = popupElementEdit.querySelector('.popup__input_field_post');
+const nameEditInput = popupElementEdit.querySelector('.popup__input_field_name');
+const postEditInput = popupElementEdit.querySelector('.popup__input_field_post');
 const namePlaceInput = popupElementAdd.querySelector('.popup__input_field_place-name');
 const linkPlaceInput = popupElementAdd.querySelector('.popup__input_field_place-link');
 
@@ -38,22 +36,22 @@ const cardPlaceTemplate = document.querySelector('#card-place').content;
 const cardElemGridContainer = document.querySelector('.elements__grid-container');
 
 
-const togglePopup = function(popup) {
+function togglePopup(popup) {
   popup.classList.toggle('popup_opened');
 }
 
 
 function renderEditInputFromPage() {
 
-  nameInput.value = nameProfile.textContent;
-  postInput.value = postProfile.textContent;
+  nameEditInput.value = nameProfile.textContent;
+  postEditInput.value = postProfile.textContent;
 }
 
 function formSubmitHandlerAboutUser(evt) {
   evt.preventDefault();
 
-  nameProfile.textContent = nameInput.value;
-  postProfile.textContent = postInput.value;
+  nameProfile.textContent = nameEditInput.value;
+  postProfile.textContent = postEditInput.value;
 
   togglePopup(popupElementEdit);
 }
@@ -135,7 +133,7 @@ function createCard(cardData) {
     return cardElement;
 }
 
-const renderCard = (cardData, cardsContainer) => {
+function renderCard(cardData, cardsContainer) {
   const cardElement = createCard(cardData);
 
   cardsContainer.prepend(cardElement);
