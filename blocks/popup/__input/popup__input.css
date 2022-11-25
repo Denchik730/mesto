@@ -11,6 +11,10 @@
   color: #000000;
 }
 
+.popup__input::placeholder {
+  color: #C4C4C4;
+}
+
 .popup__input:first-of-type {
   margin-top: 54px;
 }
