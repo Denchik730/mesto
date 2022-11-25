@@ -110,11 +110,11 @@ const initialCards = [
 ];
 
 function displayCards(arr) {
-
-  renderCard(item, cardElemGridContainer);
+  arr.forEach((item) => {
+    renderCard(item, cardElemGridContainer);
+  });
 
 }
-
 
 function createCard(cardData) {
 
