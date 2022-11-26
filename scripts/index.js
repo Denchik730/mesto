@@ -36,10 +36,6 @@ const cardPlaceTemplate = document.querySelector('#card-place').content.querySel
 const cardElemGridContainer = document.querySelector('.elements__grid-container');
 
 
-// function togglePopup(popup) {
-//   popup.classList.toggle('popup_opened');
-// }
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
@@ -68,14 +64,10 @@ function formNewPlaceSubmitHandler(evt) {
 
   renderCard({name: namePlaceInput.value, link: linkPlaceInput.value}, cardElemGridContainer);
 
-  // namePlaceInput.value = '';
-  // linkPlaceInput.value = '';
-
   formElementAdd.reset();
 
   closePopup(popupElementAdd);
 }
-
 
 formElementEdit.addEventListener('submit', formAboutUserSubmitHandler);
 formElementAdd.addEventListener('submit', formNewPlaceSubmitHandler);
