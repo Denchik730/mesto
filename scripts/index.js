@@ -36,12 +36,19 @@ const cardPlaceTemplate = document.querySelector('#card-place').content;
 const cardElemGridContainer = document.querySelector('.elements__grid-container');
 
 
-function togglePopup(popup) {
-  popup.classList.toggle('popup_opened');
+// function togglePopup(popup) {
+//   popup.classList.toggle('popup_opened');
+// }
+
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
 }
 
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
 
-function renderEditInputFromPage() {
+function fillEditPopupInputsFromPage() {
 
   nameEditInput.value = nameProfile.textContent;
   postEditInput.value = postProfile.textContent;
@@ -53,7 +60,7 @@ function formSubmitHandlerAboutUser(evt) {
   nameProfile.textContent = nameEditInput.value;
   postProfile.textContent = postEditInput.value;
 
-  togglePopup(popupElementEdit);
+  closePopup(popupElementEdit);
 }
 
 function formSubmitHandlerNewPlace(evt) {
@@ -61,23 +68,25 @@ function formSubmitHandlerNewPlace(evt) {
 
   renderCard({name: namePlaceInput.value, link: linkPlaceInput.value}, cardElemGridContainer);
 
-  namePlaceInput.value = '';
-  linkPlaceInput.value = '';
+  // namePlaceInput.value = '';
+  // linkPlaceInput.value = '';
 
-  togglePopup(popupElementAdd);
+  formElementAdd.reset();
+
+  closePopup(popupElementAdd);
 }
 
 
 formElementEdit.addEventListener('submit', formSubmitHandlerAboutUser);
 formElementAdd.addEventListener('submit', formSubmitHandlerNewPlace);
-popupAddOpenButton.addEventListener('click', () => togglePopup(popupElementAdd));
-popupAddCloseButton.addEventListener('click', () => togglePopup(popupElementAdd));
+popupAddOpenButton.addEventListener('click', () => openPopup(popupElementAdd));
+popupAddCloseButton.addEventListener('click', () => closePopup(popupElementAdd));
 popupEditOpenButton.addEventListener('click', () => {
-  togglePopup(popupElementEdit);
-  renderEditInputFromPage();
+  openPopup(popupElementEdit);
+  fillEditPopupInputsFromPage();
 });
-popupEditCloseButton.addEventListener('click', () => togglePopup(popupElementEdit));
-popupImageCloseButton.addEventListener('click', () => togglePopup(popupElementZoomImage));
+popupEditCloseButton.addEventListener('click', () => closePopup(popupElementEdit));
+popupImageCloseButton.addEventListener('click', () => closePopup(popupElementZoomImage));
 
 
 
@@ -85,7 +94,7 @@ popupImageCloseButton.addEventListener('click', () => togglePopup(popupElementZo
 const initialCards = [
   {
     name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jp'
   },
   {
     name: 'Челябинская область',
@@ -122,6 +131,8 @@ function createCard(cardData) {
 
     cardElement.querySelector('.card-place__img').src = cardData.link;
 
+    cardElement.querySelector('.card-place__img').src = cardData.link;
+
     cardElement.querySelector('.card-place__name').textContent = cardData.name;
 
     cardElement.querySelector('.card-place__like').addEventListener('click', likeCard);
@@ -155,7 +166,7 @@ function openPopupImage(evt) {
   const target = evt.target;
   popupImage.src = target.src;
   popupImageDescr.textContent = target.nextElementSibling.nextElementSibling.textContent;
-  togglePopup(popupElementZoomImage);
+  openPopup(popupElementZoomImage);
 }
 
 
@@ -163,6 +174,3 @@ function deleteCard(evt) {
   const target = evt.target;
   target.closest('.card-place').remove();
 }
-
-
-
