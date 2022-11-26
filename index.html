@@ -19,11 +19,11 @@
         <img src="./images/avatar.png" alt="аватарка профиля" class="info__profile-avatar">
         <div class="info__profile-descr">
           <h1 class="info__profile-name">Жак-Ив Кусто</h1>
-          <button type="button" class="info__edit-button"></button>
+          <button type="button" aria-label="Редактировать" class="info__edit-button"></button>
         </div>
         <p class="info__profile-post">Исследователь океана</p>
       </div>
-      <button type="button" class="info__add-button"></button>
+      <button type="button" aria-label="Закрыть" class="info__add-button"></button>
     </section>
 
     <section class="elements page__elements">
@@ -32,10 +32,10 @@
         <template id="card-place">
           <figure class="card-place">
             <img src="#" class="card-place__img" alt="#">
-            <button type="button" class="card-place__delete"></button>
+            <button type="button" aria-label="Удалить" class="card-place__delete"></button>
             <figcaption class="card-place__descr">
               <h2 class="card-place__name"></h2>
-              <button type="button" class="card-place__like"></button>
+              <button type="button" aria-label="Нравиться" class="card-place__like"></button>
             </figcaption>
           </figure>
         </template>
@@ -52,11 +52,11 @@
     <div class="popup__container">
       <form name="editForm" class="popup__form popup__form_edit">
         <h2 class="popup__title-form">Редактировать профиль</h2>
-        <input required name="name" type="text" class="popup__input popup__input_field_name">
-        <input required name="post" type="text" class="popup__input popup__input_field_post">
+        <input required name="name" type="text" class="popup__input popup__input_field_name" placeholder="Имя">
+        <input required name="post" type="text" class="popup__input popup__input_field_post" placeholder="О себе">
         <button type="submit" class="popup__button-form">Сохранить</button>
       </form>
-      <button type="button" class="popup__close"></button>
+      <button type="button" aria-label="Закрыть" class="popup__close"></button>
     </div>
   </section>
 
@@ -65,10 +65,10 @@
       <form name="addForm" class="popup__form popup__form_add">
         <h2 class="popup__title-form">Новое место</h2>
         <input required name="name-place" type="text" class="popup__input popup__input_field_place-name" placeholder="Название">
-        <input required name="link" type="text" class="popup__input popup__input_field_place-link" placeholder="Ссылка на картинку">
+        <input required name="link" type="url" class="popup__input popup__input_field_place-link" placeholder="Ссылка на картинку">
         <button type="submit" class="popup__button-form">Создать</button>
       </form>
-      <button type="button" class="popup__close"></button>
+      <button type="button" aria-label="Закрыть" class="popup__close"></button>
     </div>
   </section>
 
@@ -78,10 +78,11 @@
         <img src="#" class="popup__place-image" alt="#">
         <figcaption class="popup__place-descr"></figcaption>
       </figure>
-      <button type="button" class="popup__close"></button>
+      <button type="button" aria-label="Закрыть" class="popup__close"></button>
     </div>
   </section>
 
-  <script src="./scripts/index.js"></script>
+  <script defer src="./scripts/cards.js"></script>
+  <script defer src="./scripts/index.js"></script>
 </body>
 </html>
