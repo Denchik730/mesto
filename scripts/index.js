@@ -1,4 +1,6 @@
 // popups
+const popups = document.querySelectorAll('.popup');
+
 const popupElementEdit = document.querySelector('.popup_edit_form');
 const popupElementAdd = document.querySelector('.popup_add_form');
 const popupElementZoomImage = document.querySelector('.popup_image');
@@ -38,16 +40,50 @@ const cardElemGridContainer = document.querySelector('.elements__grid-container'
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+
+  document.addEventListener('keydown', closePopupByKey);
+
+  closePopupByOverlay(popup);
+
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+
+  document.removeEventListener('keydown', closePopupByKey);
+
+
+}
+
+function closePopupByOverlay(popup) {
+
+  popup.addEventListener('click', (e) => {
+
+    if (e.currentTarget == e.target) {
+
+      closePopup(popup);
+    }
+
+  });
+
+}
+
+function closePopupByKey(e) {
+
+  const openPopup = document.querySelector('.popup_opened');
+
+  if (e.key === 'Escape') {
+
+    closePopup(openPopup);
+
+  };
 }
 
 function fillEditPopupInputsFromPage() {
 
   nameEditInput.value = nameProfile.textContent;
   postEditInput.value = postProfile.textContent;
+
 }
 
 function formAboutUserSubmitHandler(evt) {
@@ -57,6 +93,15 @@ function formAboutUserSubmitHandler(evt) {
   postProfile.textContent = postEditInput.value;
 
   closePopup(popupElementEdit);
+
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button-form',
+    inactiveButtonClass: 'popup__button-form_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+  });
 }
 
 function formNewPlaceSubmitHandler(evt) {
@@ -66,7 +111,18 @@ function formNewPlaceSubmitHandler(evt) {
 
   formElementAdd.reset();
 
+
   closePopup(popupElementAdd);
+
+
+  enableValidation({
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button-form',
+    inactiveButtonClass: 'popup__button-form_inactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__input-error_active'
+  });
 }
 
 formElementEdit.addEventListener('submit', formAboutUserSubmitHandler);
