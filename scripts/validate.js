@@ -56,13 +56,21 @@ function hasInvalidInput(inputList) {
   });
 }
 
+function disableSubmitButton(button, inactiveButtonClass) {
+  button.classList.add(inactiveButtonClass);
+  button.setAttribute('disabled', true);
+}
+
+function enableSubmitButton(button, inactiveButtonClass) {
+  button.classList.remove(inactiveButtonClass);
+  button.removeAttribute('disabled');
+}
+
 function toggleButtonState({inputList, submitButtonElement, inactiveButtonClass}) {
   if (hasInvalidInput(inputList)) {
-    submitButtonElement.classList.add(inactiveButtonClass);
-    submitButtonElement.setAttribute('disabled', true);
+    disableSubmitButton(submitButtonElement, inactiveButtonClass);
   } else {
-    submitButtonElement.classList.remove(inactiveButtonClass);
-    submitButtonElement.removeAttribute('disabled');
+    enableSubmitButton(submitButtonElement, inactiveButtonClass);
   }
 
 }

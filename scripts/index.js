@@ -70,9 +70,10 @@ function closePopupByOverlay(popup) {
 
 function closePopupByKey(e) {
 
-  const openPopup = document.querySelector('.popup_opened');
 
   if (e.key === 'Escape') {
+
+    const openPopup = document.querySelector('.popup_opened');
 
     closePopup(openPopup);
 
@@ -94,17 +95,10 @@ function formAboutUserSubmitHandler(evt) {
 
   closePopup(popupElementEdit);
 
-  enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button-form',
-    inactiveButtonClass: 'popup__button-form_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-  });
 }
 
 function formNewPlaceSubmitHandler(evt) {
+
   evt.preventDefault();
 
   renderCard({name: namePlaceInput.value, link: linkPlaceInput.value}, cardElemGridContainer);
@@ -114,15 +108,10 @@ function formNewPlaceSubmitHandler(evt) {
 
   closePopup(popupElementAdd);
 
+  const buttonSubmitNewPlace = evt.target.querySelector('.popup__button-form');
 
-  enableValidation({
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button-form',
-    inactiveButtonClass: 'popup__button-form_inactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__input-error_active'
-  });
+  disableSubmitButton(buttonSubmitNewPlace, 'popup__button-form_inactive');
+
 }
 
 formElementEdit.addEventListener('submit', formAboutUserSubmitHandler);
