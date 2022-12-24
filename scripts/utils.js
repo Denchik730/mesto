@@ -38,4 +38,4 @@ function closePopupByKey(e) {
   };
 }
 
-export {openPopup, closePopup, closePopupByOverlay, closePopupByKey};
+export { openPopup, closePopup, closePopupByOverlay, closePopupByKey };

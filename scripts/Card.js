@@ -1,3 +1,4 @@
+import { popupImage, popupImageDescr, popupElementZoomImage } from './constants.js'
 import  { openPopup } from "./utils.js";
 
 export default class Card {
@@ -8,13 +9,13 @@ export default class Card {
   }
 
   _getTemplate() {
-    const cardElement = document
-    .querySelector(this._templateSelector) // используем this._templateSelector
+
+    return document
+    .querySelector(this._templateSelector)
     .content
     .querySelector('.card-place')
     .cloneNode(true);
 
-    return cardElement;
   }
 
   _setEventListeners() {
@@ -41,10 +42,6 @@ export default class Card {
   }
 
   _handleClickImage() {
-    const popupImage = document.querySelector('.popup__place-image');
-    const popupImageDescr = document.querySelector('.popup__place-descr');
-    const popupElementZoomImage = document.querySelector('.popup_image');
-
 
     popupImage.src = this._elementImage.src;
     popupImage.alt = this._elementImage.alt;

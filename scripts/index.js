@@ -21,7 +21,8 @@ import {
   linkPlaceInput,
   nameProfile,
   postProfile,
-  cardElemGridContainer
+  cardElemGridContainer,
+  formValidatorData
 } from './constants.js';
 
 import {
@@ -59,7 +60,7 @@ function formNewPlaceSubmitHandler(evt) {
 
   closePopup(popupElementAdd);
 
-  validateAddForm.enableValidation();
+  validateAddForm.disableSubmitButton();
 
 }
 
@@ -74,9 +75,7 @@ popupEditOpenButton.addEventListener('click', () => {
 popupEditCloseButton.addEventListener('click', () => closePopup(popupElementEdit));
 popupImageCloseButton.addEventListener('click', () => closePopup(popupElementZoomImage));
 
-
-
-// //Шесть карточек из коробки
+// Создаем карточки из объекта данных
 function displayCards(arr) {
   arr.forEach((item) => {
 
@@ -96,24 +95,10 @@ function createCard(objData, templateSelector, ParentSelector) {
 
 displayCards(initialCards);
 
-const validateEditForm = new FormValidator({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-form',
-  inactiveButtonClass: 'popup__button-form_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}, '.popup__form_edit')
+const validateEditForm = new FormValidator(formValidatorData, '.popup__form_edit')
 
 validateEditForm.enableValidation();
 
-const validateAddForm = new FormValidator({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-form',
-  inactiveButtonClass: 'popup__button-form_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}, '.popup__form_add')
+const validateAddForm = new FormValidator(formValidatorData, '.popup__form_add')
 
 validateAddForm.enableValidation();
