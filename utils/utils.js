@@ -1,3 +1,12 @@
+import { userInfo } from '../pages/index.js';
+import { nameEditInput, postEditInput } from  './constants.js'
+
+function fillEditPopupInputsFromPage() {
+  const inputEditFormValues = userInfo.getUserInfo();
+  nameEditInput.value = inputEditFormValues.name;
+  postEditInput.value = inputEditFormValues.post;
+}
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 
@@ -38,4 +47,4 @@ function closePopupByKey(e) {
   };
 }
 
-export { openPopup, closePopup, closePopupByOverlay, closePopupByKey };
+export { openPopup, closePopup, closePopupByOverlay, closePopupByKey, fillEditPopupInputsFromPage };

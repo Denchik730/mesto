@@ -25,11 +25,19 @@ const namePlaceInput = popupElementAdd.querySelector('.popup__input_field_place-
 const linkPlaceInput = popupElementAdd.querySelector('.popup__input_field_place-link');
 
 // Данные о пользователе которые показаны на странице
-const nameProfile = document.querySelector('.info__profile-name');
-const postProfile = document.querySelector('.info__profile-post');
+const nameProfile = '.info__profile-name';
+const postProfile = '.info__profile-post';
 
 // Обертка для краточек
-const cardElemGridContainer = document.querySelector('.elements__grid-container');
+const cardElemGridContainer = '.elements__grid-container';
+
+// Селекторы попапов
+const popupEditProfileSelector = '.popup_type_profile';
+const popupAddSelector = '.popup_type_add';
+const popupZoomImageSelector = '.popup_type_image';
+
+// Селекторы темлэйт шаблонов
+const cardTemplateSelector = '#card-place';
 
 // Данные для класса валидации
 const formValidatorData = {
@@ -61,5 +69,9 @@ export {
   nameProfile,
   postProfile,
   cardElemGridContainer,
+  popupEditProfileSelector,
+  popupAddSelector,
+  popupZoomImageSelector,
+  cardTemplateSelector,
   formValidatorData
 };

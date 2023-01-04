@@ -1,10 +1,11 @@
-import { popupImage, popupImageDescr, popupElementZoomImage } from './constants.js'
-import  { openPopup } from "./utils.js";
+import { popupImage, popupImageDescr, popupElementZoomImage } from '../utils/constants.js'
+import  { openPopup } from "../utils/utils.js";
 
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor({ data, handleCardClick }, templateSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
   }
 
@@ -28,7 +29,8 @@ export default class Card {
     });
 
     this._elementImage.addEventListener('click', () => {
-      this._handleClickImage();
+      // this._handleClickImage();
+      this._handleCardClick();
     });
   }
 
@@ -41,14 +43,14 @@ export default class Card {
     this._element.remove();
   }
 
-  _handleClickImage() {
+  // _handleClickImage() {
 
-    popupImage.src = this._elementImage.src;
-    popupImage.alt = this._elementImage.alt;
-    popupImageDescr.textContent = this._elementImage.nextElementSibling.nextElementSibling.textContent;
+  //   popupImage.src = this._elementImage.src;
+  //   popupImage.alt = this._elementImage.alt;
+  //   popupImageDescr.textContent = this._elementImage.nextElementSibling.nextElementSibling.textContent;
 
-    openPopup(popupElementZoomImage);
-  }
+  //   openPopup(popupElementZoomImage);
+  // }
 
   generateCard() {
     this._element = this._getTemplate();
