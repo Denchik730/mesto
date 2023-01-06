@@ -1,6 +1,3 @@
-import { popupImage, popupImageDescr, popupElementZoomImage } from '../utils/constants.js'
-import  { openPopup } from "../utils/utils.js";
-
 export default class Card {
   constructor({ data, handleCardClick }, templateSelector) {
     this._name = data.name;
@@ -42,15 +39,6 @@ export default class Card {
   _handleDeleteClick() {
     this._element.remove();
   }
-
-  // _handleClickImage() {
-
-  //   popupImage.src = this._elementImage.src;
-  //   popupImage.alt = this._elementImage.alt;
-  //   popupImageDescr.textContent = this._elementImage.nextElementSibling.nextElementSibling.textContent;
-
-  //   openPopup(popupElementZoomImage);
-  // }
 
   generateCard() {
     this._element = this._getTemplate();
