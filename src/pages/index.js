@@ -1,3 +1,5 @@
+import './index.css';
+
 import Card from '../components/Card.js';
 
 import FormValidator from '../components/FormValidator.js';
@@ -13,20 +15,10 @@ import UserInfo from '../components/UserInfo.js';
 import initialCards from '../utils/cards.js';
 
 import {
-  popupElementEdit,
-  popupElementAdd,
-  popupElementZoomImage,
   popupEditOpenButton,
   popupAddOpenButton,
-  popupEditCloseButton,
-  popupAddCloseButton,
-  popupImageCloseButton,
-  formElementEdit,
-  formElementAdd,
   nameEditInput,
   postEditInput,
-  namePlaceInput,
-  linkPlaceInput,
   nameProfile,
   postProfile,
   cardElemGridContainer,
@@ -36,15 +28,6 @@ import {
   cardTemplateSelector,
   formValidatorData
 } from '../utils/constants.js';
-
-import {
-  openPopup,
-  closePopup,
-  closePopupByOverlay,
-  closePopupByKey,
-  fillEditPopupInputsFromPage
-} from '../utils/utils.js';
-
 
 const validateEditForm = new FormValidator(formValidatorData, '.popup__form_edit')
 
@@ -67,7 +50,6 @@ const cardsList = new Section({
     }, cardTemplateSelector)
 
     const cardElement = card.generateCard();
-
 
     cardsList.addItem(cardElement);
   }
@@ -107,9 +89,9 @@ popupEditForm.setEventListeners();
 popupAddOpenButton.addEventListener('click', () => popupAddForm.open());
 
 popupEditOpenButton.addEventListener('click', () => {
-  fillEditPopupInputsFromPage();
+  const inputEditFormValues = userInfo.getUserInfo();
+  nameEditInput.value = inputEditFormValues.name;
+  postEditInput.value = inputEditFormValues.post;
   popupEditForm.open();
 });
 
-
-export {userInfo};

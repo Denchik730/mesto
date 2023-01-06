@@ -1,6 +1,4 @@
 import Popup from "./Popup.js";
-import { popupImage, popupImageDescr, popupElementZoomImage } from '../utils/constants.js'
-
 
 export default class PopupWithImage extends Popup {
   constructor(popupSelector) {
@@ -9,12 +7,12 @@ export default class PopupWithImage extends Popup {
     this._popupDescr = this._popup.querySelector('.popup__place-descr');
   }
 
-  open(cardData) {
+  open(popupZoomData) {
     super.open();
 
-    this._popupImage.src = cardData.link;
-    this._popupImage.alt = cardData.name;
-    this._popupDescr.textContent = cardData.name;
+    this._popupImage.src = popupZoomData.link;
+    this._popupImage.alt = popupZoomData.name;
+    this._popupDescr.textContent = popupZoomData.name;
 
   }
 }
