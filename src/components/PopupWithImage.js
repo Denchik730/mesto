@@ -11,8 +11,9 @@ export default class PopupWithImage extends Popup {
     super.open();
 
     this._popupImage.src = popupZoomData.link;
-    this._popupImage.alt = popupZoomData.name;
+    this._popupImage.alt = `Изображение ${popupZoomData.name}`;
     this._popupDescr.textContent = popupZoomData.name;
 
   }
+
 }
