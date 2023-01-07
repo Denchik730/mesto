@@ -17,8 +17,6 @@ import initialCards from '../utils/cards.js';
 import {
   popupEditOpenButton,
   popupAddOpenButton,
-  nameEditInput,
-  postEditInput,
   nameProfile,
   postProfile,
   cardElemGridContainer,
@@ -37,19 +35,26 @@ const validateAddForm = new FormValidator(formValidatorData, '.popup__form_add')
 
 validateAddForm.enableValidation();
 
+const popupZoomImage = new PopupWithImage(popupZoomImageSelector);
+popupZoomImage.setEventListeners();
+
+function createCard(item) {
+  const card = new Card({
+    data: item,
+    handleCardClick: () => {
+      popupZoomImage.open(item);
+    }
+  }, cardTemplateSelector)
+
+  const cardElement = card.generateCard();
+
+  return cardElement;
+}
+
 const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card({
-      data: item,
-      handleCardClick: () => {
-        const popupZoomImage = new PopupWithImage(popupZoomImageSelector);
-        popupZoomImage.setEventListeners();
-        popupZoomImage.open(item);
-      }
-    }, cardTemplateSelector)
-
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item);
 
     cardsList.addItem(cardElement);
   }
@@ -59,20 +64,9 @@ cardsList.renderItems();
 
 
 const popupAddForm = new PopupWithForm(popupAddSelector, (addData) => {
-  const card = new Card({
-    data: addData,
-    handleCardClick: () => {
-      const popupZoomImage = new PopupWithImage(popupZoomImageSelector);
-      popupZoomImage.setEventListeners();
-      popupZoomImage.open(addData);
-    }
-  }, cardTemplateSelector)
-
-  const cardElement = card.generateCard();
+  const cardElement = createCard(addData);
 
   cardsList.addItem(cardElement);
-  validateAddForm.disableSubmitButton();
-
 });
 
 popupAddForm.setEventListeners();
@@ -86,12 +80,14 @@ const popupEditForm = new PopupWithForm(popupEditProfileSelector, (editData) => 
 
 popupEditForm.setEventListeners();
 
-popupAddOpenButton.addEventListener('click', () => popupAddForm.open());
+popupAddOpenButton.addEventListener('click', () => {
+  popupAddForm.open();
+  validateAddForm.disableSubmitButton();
+});
 
 popupEditOpenButton.addEventListener('click', () => {
   const inputEditFormValues = userInfo.getUserInfo();
-  nameEditInput.value = inputEditFormValues.name;
-  postEditInput.value = inputEditFormValues.post;
+  popupEditForm.setInputValues(inputEditFormValues);
   popupEditForm.open();
 });
 
