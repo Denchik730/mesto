@@ -10,6 +10,7 @@ const popupElementZoomImage = document.querySelector('.popup_type_image');
 // кнопки открытия попапов
 const popupEditOpenButton = document.querySelector('.info__edit-button');
 const popupAddOpenButton = document.querySelector('.info__add-button');
+const popupAvatarEditOpenButton = document.querySelector('.info__profile-avatar-edit');
 
 // кнопки закрытия попапов
 const popupEditCloseButton = popupElementEdit.querySelector('.popup__close');
@@ -27,6 +28,7 @@ const linkPlaceInput = popupElementAdd.querySelector('.popup__input_field_place-
 // Данные о пользователе которые показаны на странице
 const nameProfile = '.info__profile-name';
 const postProfile = '.info__profile-post';
+const avatarProfile = '.info__profile-avatar';
 
 // Обертка для краточек
 const cardElemGridContainer = '.elements__grid-container';
@@ -57,6 +59,7 @@ export {
   popupElementZoomImage,
   popupEditOpenButton,
   popupAddOpenButton,
+  popupAvatarEditOpenButton,
   popupEditCloseButton,
   popupAddCloseButton,
   popupImageCloseButton,
@@ -68,6 +71,7 @@ export {
   linkPlaceInput,
   nameProfile,
   postProfile,
+  avatarProfile,
   cardElemGridContainer,
   popupEditProfileSelector,
   popupAddSelector,

@@ -1,0 +1,5 @@
+
+.info__profile-avatar-wrapper {
+  position: relative;
+  grid-row: 1/3;
+}
