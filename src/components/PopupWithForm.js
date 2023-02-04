@@ -7,7 +7,6 @@ export default class PopupWithForm extends Popup {
 
     this._popupForm = this._popup.querySelector('.popup__form');
     this._inputList = this._popupForm.querySelectorAll('.popup__input')
-
   }
 
   _getInputValues() {
@@ -35,4 +34,5 @@ export default class PopupWithForm extends Popup {
       this.close();
     })
   }
+
 }
