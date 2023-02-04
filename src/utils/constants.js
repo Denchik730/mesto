@@ -10,7 +10,7 @@ const popupElementZoomImage = document.querySelector('.popup_type_image');
 // кнопки открытия попапов
 const popupEditOpenButton = document.querySelector('.info__edit-button');
 const popupAddOpenButton = document.querySelector('.info__add-button');
-const popupAvatarEditOpenButton = document.querySelector('.info__profile-avatar-edit');
+const popupAvatarEditOpenButton = document.querySelector('.info__profile-avatar-wrapper');
 
 // кнопки закрытия попапов
 const popupEditCloseButton = popupElementEdit.querySelector('.popup__close');

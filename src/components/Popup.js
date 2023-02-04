@@ -4,6 +4,7 @@ export default class Popup {
     this._handleEscClose = this._handleEscClose.bind(this);
     this._handleOverlayClose = this._handleOverlayClose.bind(this);
     this._popupCloseButton = this._popup.querySelector('.popup__close');
+    this._popupFormBtn = this._popup.querySelector('.popup__button-form');
   }
 
   open() {
@@ -26,6 +27,10 @@ export default class Popup {
     if (e.currentTarget == e.target) {
       this.close();
     }
+  }
+
+  setButtonText(text) {
+    this._popupFormBtn.textContent = text;
   }
 
   setEventListeners() {

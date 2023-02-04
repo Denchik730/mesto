@@ -13,14 +13,12 @@ export default class Api {
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
-      method: 'GET',
       headers: this._headers
     }).then(this._checkRes)
   }
 
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
-      method: 'GET',
       headers: this._headers
     }).then(this._checkRes)
   }

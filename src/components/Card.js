@@ -1,6 +1,5 @@
 export default class Card {
   constructor({ data, handleCardClick, handleLikeBtnClick, handleDeleteBtnClick}, templateSelector, currentUserId) {
-    console.log(data)
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -25,36 +24,19 @@ export default class Card {
 
   _setEventListeners() {
     this._elementLikeButton.addEventListener('click', () => {
-      // this._handleLikeClick();
-      this._handleLikeBtnClick(this._elementLikeButton);
+      this._handleLikeBtnClick(this._elementLikeButton, this._id);
     });
 
-    this._elementDeleteButton.addEventListener('click', () => {
-      this._handleDeleteBtnClick();
-    });
+    if (this._elementDeleteButton) {
+      this._elementDeleteButton.addEventListener('click', () => {
+        this._handleDeleteBtnClick(this._id);
+      });
+    }
 
     this._elementImage.addEventListener('click', () => {
       this._handleCardClick();
     });
   }
-
-  // _handleLikeClick() {
-  //   if (this._elementLikeButton.classList.contains('card-place__like_active')) {
-  //     this._api.dislikeCard(this._id)
-  //       .then((data) => {
-  //         this._elementLikeButton.classList.remove('card-place__like_active');
-  //         this._elementCountLikes.textContent = data.likes.length
-  //       })
-  //       .catch((err) => console.log(err));
-  //   } else {
-  //     this._api.likeCard(this._id)
-  //     .then((data) => {
-  //       this._elementLikeButton.classList.add('card-place__like_active');
-  //       this._elementCountLikes.textContent = data.likes.length
-  //     })
-  //     .catch((err) => console.log(err));
-  //   }
-  // }
 
   _handleDeleteClick() {
     this._element.remove();
@@ -62,19 +44,19 @@ export default class Card {
 
   updateCountLikesForCard(data) {
     this._elementCountLikes.textContent = data.length;
-    this._isShowLike();
   }
 
   _isShowLike() {
     this._likes.forEach(item => {
-      item._id == this._currentUserId ? this._elementLikeButton.classList.add('card-place__like_active') : this._elementLikeButton.classList.remove('card-place__like_active');
+      if (item._id == this._currentUserId) {
+        this._elementLikeButton.classList.add('card-place__like_active')
+      }
     });
-
   }
 
   _isShowDeleteBtn() {
     if (this._currentUserId !== this._ownerUserId) {
-      this._elementDeleteButton.classList.add('card-place__delete_hidden');
+      this._elementDeleteButton.remove();
     }
   }
 
