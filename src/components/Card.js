@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ data, handleCardClick, handleLikeBtnClick, handleDeleteBtnClick}, templateSelector, currentUserId) {
+  constructor({ data, handleCardClick, handleLikeBtnClick, handleDeleteBtnClick}, templateSelector, currentUserId, api) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -10,6 +10,7 @@ export default class Card {
     this._currentUserId = currentUserId;
     this._ownerUserId = data.owner._id;
     this._id = data._id;
+    this._api = api;
   }
 
   _getTemplate() {
@@ -24,12 +25,12 @@ export default class Card {
 
   _setEventListeners() {
     this._elementLikeButton.addEventListener('click', () => {
-      this._handleLikeBtnClick(this._elementLikeButton, this._id);
+      this._handleLikeBtnClick();
     });
 
     if (this._elementDeleteButton) {
       this._elementDeleteButton.addEventListener('click', () => {
-        this._handleDeleteBtnClick(this._id);
+        this._handleDeleteBtnClick();
       });
     }
 
@@ -38,11 +39,33 @@ export default class Card {
     });
   }
 
-  _handleDeleteClick() {
+  handleLikeClick() {
+    if (this._elementLikeButton.classList.contains('card-place__like_active')) {
+
+      this._api.dislikeCard(this._id)
+        .then((data) => {
+          this._elementLikeButton.classList.remove('card-place__like_active');
+          this._updateCountLikesForCard(data.likes)
+        })
+        .catch((err) => console.log(err));
+
+    } else {
+
+      this._api.likeCard(this._id)
+        .then((data) => {
+          this._elementLikeButton.classList.add('card-place__like_active');
+          this._updateCountLikesForCard(data.likes)
+        })
+        .catch((err) => console.log(err));
+
+    }
+  }
+
+  handleDeleteClick() {
     this._element.remove();
   }
 
-  updateCountLikesForCard(data) {
+  _updateCountLikesForCard(data) {
     this._elementCountLikes.textContent = data.length;
   }
 
@@ -68,7 +91,7 @@ export default class Card {
     this._elementName = this._element.querySelector('.card-place__name');
     this._elementDeleteButton = this._element.querySelector('.card-place__delete');
 
-    this.updateCountLikesForCard(this._likes);
+    this._updateCountLikesForCard(this._likes);
 
     this._isShowDeleteBtn();
 

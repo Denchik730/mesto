@@ -17,9 +17,7 @@ export default class UserInfo {
   setUserInfo(data) {
     this._profileName.textContent = data.name;
     this._profilePost.textContent = data.about;
-    if (data.hasOwnProperty('avatar')) {
-      this._profileAvatar.src = data.avatar;
-    }
+    this._profileAvatar.src = data.avatar;
   }
 
   setUserId(data) {
