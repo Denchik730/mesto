@@ -79,37 +79,18 @@ function createCard(item) {
       popupZoomImage.open(item);
 
     },
-    handleLikeBtnClick: (likeButton, id) => {
-
-      if (likeButton.classList.contains('card-place__like_active')) {
-
-        api.dislikeCard(id)
-          .then((data) => {
-            likeButton.classList.remove('card-place__like_active');
-            card.updateCountLikesForCard(data.likes)
-          })
-          .catch((err) => console.log(err));
-
-      } else {
-
-        api.likeCard(id)
-          .then((data) => {
-            likeButton.classList.add('card-place__like_active');
-            card.updateCountLikesForCard(data.likes)
-          })
-          .catch((err) => console.log(err));
-
-      }
+    handleLikeBtnClick: () => {
+      card.handleLikeClick();
     },
-    handleDeleteBtnClick: (id) => {
+    handleDeleteBtnClick: () => {
 
       popupWithConfirmation.setSubmitFunc(() => {
 
         popupWithConfirmation.setButtonText('Сохранить...');
 
-        api.deleteCard(id)
+        api.deleteCard(item._id)
           .then(() => {
-            card._handleDeleteClick();
+            card.handleDeleteClick();
             popupWithConfirmation.close();
           })
           .catch((err) => console.log(err))
@@ -122,6 +103,7 @@ function createCard(item) {
   },
   cardTemplateSelector,
   userInfo.id,
+  api
   )
 
   const cardElement = card.generateCard();
@@ -152,6 +134,7 @@ const popupAddForm = new PopupWithForm(popupAddSelector, (newCardData) => {
     .then(newApiCardData => {
       const cardElement = createCard(newApiCardData);
       cardsList.addItem(cardElement);
+      popupAddForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => popupAddForm.setButtonText('Создать'))
@@ -166,8 +149,9 @@ const popupEditForm = new PopupWithForm(popupEditProfileSelector, (editUserProfi
   popupEditForm.setButtonText('Сохранить...');
 
   api.setProfileUserInfo(editUserProfileData)
-    .then(() => {
-      userInfo.setUserInfo(editUserProfileData);
+    .then((userDataFromApi) => {
+      userInfo.setUserInfo(userDataFromApi);
+      popupEditForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => popupEditForm.setButtonText('Сохранить'))
@@ -184,6 +168,7 @@ const popupAvatarEdit = new PopupWithForm('.popup_type_edit-avatar', (editUserAv
   api.changeUserAvatar(editUserAvatarData)
     .then(() => {
       userInfo.setUserAvatar(editUserAvatarData)
+      popupAvatarEdit.close();
     })
     .catch(err => console.log(err))
     .finally(() => popupAvatarEdit.setButtonText('Сохранить'))
