@@ -86,7 +86,7 @@ function createCard(item) {
             card.removeActiveClassLikeBtn();
             card.updateCountLikesForCard(data.likes);
           })
-        .catch((err) => console.log(err));
+          .catch((err) => console.log(err));
       } else {
         api.likeCard(item._id)
           .then((data) => {
