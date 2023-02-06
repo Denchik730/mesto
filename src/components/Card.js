@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({ data, handleCardClick, handleLikeBtnClick, handleDeleteBtnClick}, templateSelector, currentUserId, api) {
+  constructor({ data, handleCardClick, handleLikeBtnClick, handleDeleteBtnClick}, templateSelector, currentUserId) {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
@@ -10,7 +10,6 @@ export default class Card {
     this._currentUserId = currentUserId;
     this._ownerUserId = data.owner._id;
     this._id = data._id;
-    this._api = api;
   }
 
   _getTemplate() {
@@ -39,33 +38,27 @@ export default class Card {
     });
   }
 
-  handleLikeClick() {
+  addActiveClassLikeBtn() {
+    this._elementLikeButton.classList.add('card-place__like_active');
+  }
+
+  removeActiveClassLikeBtn() {
+    this._elementLikeButton.classList.remove('card-place__like_active');
+  }
+
+  isThereActiveClassLikeBtn() {
     if (this._elementLikeButton.classList.contains('card-place__like_active')) {
-
-      this._api.dislikeCard(this._id)
-        .then((data) => {
-          this._elementLikeButton.classList.remove('card-place__like_active');
-          this._updateCountLikesForCard(data.likes)
-        })
-        .catch((err) => console.log(err));
-
-    } else {
-
-      this._api.likeCard(this._id)
-        .then((data) => {
-          this._elementLikeButton.classList.add('card-place__like_active');
-          this._updateCountLikesForCard(data.likes)
-        })
-        .catch((err) => console.log(err));
-
+      return true;
     }
+
+    return false;
   }
 
   handleDeleteClick() {
     this._element.remove();
   }
 
-  _updateCountLikesForCard(data) {
+  updateCountLikesForCard(data) {
     this._elementCountLikes.textContent = data.length;
   }
 
@@ -91,7 +84,7 @@ export default class Card {
     this._elementName = this._element.querySelector('.card-place__name');
     this._elementDeleteButton = this._element.querySelector('.card-place__delete');
 
-    this._updateCountLikesForCard(this._likes);
+    this.updateCountLikesForCard(this._likes);
 
     this._isShowDeleteBtn();
 
