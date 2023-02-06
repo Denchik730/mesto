@@ -80,13 +80,27 @@ function createCard(item) {
 
     },
     handleLikeBtnClick: () => {
-      card.handleLikeClick();
+      if (card.isThereActiveClassLikeBtn()) {
+        api.dislikeCard(item._id)
+          .then((data) => {
+            card.removeActiveClassLikeBtn();
+            card.updateCountLikesForCard(data.likes);
+          })
+        .catch((err) => console.log(err));
+      } else {
+        api.likeCard(item._id)
+          .then((data) => {
+            card.addActiveClassLikeBtn();
+            card.updateCountLikesForCard(data.likes);
+          })
+          .catch((err) => console.log(err));
+      }
     },
     handleDeleteBtnClick: () => {
 
       popupWithConfirmation.setSubmitFunc(() => {
 
-        popupWithConfirmation.setButtonText('Сохранить...');
+        popupWithConfirmation.setButtonText('Удаление...');
 
         api.deleteCard(item._id)
           .then(() => {
@@ -102,8 +116,7 @@ function createCard(item) {
     }
   },
   cardTemplateSelector,
-  userInfo.id,
-  api
+  userInfo.id
   )
 
   const cardElement = card.generateCard();
@@ -128,7 +141,7 @@ const userInfo = new UserInfo({ profileNameSelector: nameProfile, profilePostSel
 
 const popupAddForm = new PopupWithForm(popupAddSelector, (newCardData) => {
 
-  popupAddForm.setButtonText('Сохранить...');
+  popupAddForm.setButtonText('Сохранение...');
 
   api.addNewUserCard(newCardData)
     .then(newApiCardData => {
@@ -146,7 +159,7 @@ popupAddForm.setEventListeners();
 
 const popupEditForm = new PopupWithForm(popupEditProfileSelector, (editUserProfileData) => {
 
-  popupEditForm.setButtonText('Сохранить...');
+  popupEditForm.setButtonText('Сохранение...');
 
   api.setProfileUserInfo(editUserProfileData)
     .then((userDataFromApi) => {
@@ -163,7 +176,7 @@ popupEditForm.setEventListeners();
 
 const popupAvatarEdit = new PopupWithForm('.popup_type_edit-avatar', (editUserAvatarData) => {
 
-  popupAvatarEdit.setButtonText('Сохранить...');
+  popupAvatarEdit.setButtonText('Сохранение...');
 
   api.changeUserAvatar(editUserAvatarData)
     .then(() => {
